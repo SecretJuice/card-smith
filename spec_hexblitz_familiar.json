@@ -1,0 +1,40 @@
+{
+    "nodes": [
+        {
+            "name": "name",
+            "type": "text",
+            "spec": {
+                "x": 300,
+                "y": 900,
+                "font": "Morl-Regular",
+                "font_size": 32,
+                "max_width": 400,
+                "color": "#ffffffff"
+            }
+        },
+        {
+            "name": "body",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 400,
+                "font": "Arial",
+                "font_size": 16,
+                "max_width": 500,
+                "color": "#1e1e1eaa"
+            }
+        },
+        {
+            "name": "flavor-text",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 100,
+                "font": "Morl-Regular",
+                "font_size": 12,
+                "max_width": 400,
+                "color": "#ff0000ff"
+            }
+        }
+    ]
+}

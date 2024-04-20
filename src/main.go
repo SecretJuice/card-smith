@@ -50,7 +50,7 @@ func paintNodes(context *gg.Context, specs map[string]parse.SpecNode, contents m
 }
 
 func main() {
-	const inputPath = "../resources/images/dog-eyes.jpg"
+	const inputPath = "../resources/images/coolwater_sprite-_1_TEMPLATE.png"
 	const outputPath = "../resources/images/output.png"
 	const fontPath = "../resources/fonts/"
 
@@ -65,7 +65,7 @@ func main() {
 
 	// Load the font
 
-	specNodes := parse.GetSpecification("../spec_dev.json")
+	specNodes := parse.GetSpecification("../spec_hexblitz_familiar.json")
 	contentNodes := parse.GetContent("../content_dev.json")
 
 	fmt.Println(specNodes)
