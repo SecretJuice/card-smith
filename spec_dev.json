@@ -9,9 +9,7 @@
                 "font": "super_toast",
                 "font_size": 64,
                 "max_width": 400,
-                "color": {
-                    "rgb": "#33ff33"
-                }
+                "color": "#33ff33ff"
             }
         },
         {
@@ -23,9 +21,7 @@
                 "font": "Arial",
                 "font_size": 16,
                 "max_width": 500,
-                "color": {
-                    "rgb": "#1e1e1e"
-                }
+                "color": "#1e1e1eaa"
             }
         },
         {
@@ -37,9 +33,7 @@
                 "font": "super_toast",
                 "font_size": 12,
                 "max_width": 400,
-                "color": {
-                    "rgb": "#eeeeee"
-                }
+                "color": "#ff0000ff"
             }
         }
     ]

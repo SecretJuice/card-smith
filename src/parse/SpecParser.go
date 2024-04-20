@@ -1,8 +1,10 @@
 package parse
 
 import (
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"image/color"
 	"os"
 )
 
@@ -16,9 +18,31 @@ type TextSpec struct {
 	Font     string  `json:"font"`
 	FontSize float64 `json:"font_size"`
 	MaxWidth float64 `json:"max_width"`
+	Color    string  `json:"color"`
+}
+
+type RGBA struct {
+	R uint32
+	G uint32
+	B uint32
+	A uint32
 }
 
 func (t TextSpec) isSpec() {}
+func (t TextSpec) GetColor() color.RGBA {
+	bytes, err := hex.DecodeString(t.Color)
+	if err != nil {
+		panic(err)
+	}
+	var c color.RGBA
+
+	c.R = bytes[0]
+	c.G = bytes[1]
+	c.B = bytes[2]
+	c.A = bytes[3]
+
+	return c
+}
 
 type ImageSpec struct {
 	X         int    `json:"x"`

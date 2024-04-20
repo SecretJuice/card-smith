@@ -15,7 +15,7 @@ func drawTextNode(context *gg.Context, spec parse.TextSpec, content parse.TextCo
 		log.Fatalf("Error loading font: %v", err)
 	}
 
-	context.SetRGB(0, 0, 0)
+	context.SetHexColor(spec.Color)
 	context.DrawString(content.Text, spec.X, spec.Y)
 }
 
