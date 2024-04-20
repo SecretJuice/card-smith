@@ -11,6 +11,10 @@ import (
 
 func drawTextNode(context *gg.Context, spec parse.TextSpec, content parse.TextContent) {
 
+	if err := context.LoadFontFace("../resources/fonts/"+spec.Font+".ttf", spec.FontSize); err != nil {
+		log.Fatalf("Error loading font: %v", err)
+	}
+
 	context.SetRGB(0, 0, 0)
 	context.DrawString(content.Text, spec.X, spec.Y)
 }
@@ -48,6 +52,7 @@ func paintNodes(context *gg.Context, specs map[string]parse.SpecNode, contents m
 func main() {
 	const inputPath = "../resources/images/dog-eyes.jpg"
 	const outputPath = "../resources/images/output.png"
+	const fontPath = "../resources/fonts/"
 
 	// Load the image
 	image, err := gg.LoadImage(inputPath)
@@ -59,9 +64,6 @@ func main() {
 	dc := gg.NewContextForImage(image) // Create a context with zero width and height, will auto adjust
 
 	// Load the font
-	// if err := dc.LoadFontFace(fontPath, fontSize); err != nil {
-	// 	log.Fatalf("Error loading font: %v", err)
-	// }
 
 	specNodes := parse.GetSpecification("../spec_dev.json")
 	contentNodes := parse.GetContent("../content_dev.json")

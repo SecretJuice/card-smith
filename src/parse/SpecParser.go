@@ -14,8 +14,8 @@ type TextSpec struct {
 	X        float64 `json:"x"`
 	Y        float64 `json:"y"`
 	Font     string  `json:"font"`
-	FontSize int     `json:"font_size"`
-	MaxWidth int     `json:"max_width"`
+	FontSize float64 `json:"font_size"`
+	MaxWidth float64 `json:"max_width"`
 }
 
 func (t TextSpec) isSpec() {}

@@ -8,7 +8,10 @@
                 "y": 200,
                 "font": "super_toast",
                 "font_size": 64,
-                "max_width": 400
+                "max_width": 400,
+                "color": {
+                    "rgb": "#33ff33"
+                }
             }
         },
         {
@@ -19,7 +22,10 @@
                 "y": 400,
                 "font": "Arial",
                 "font_size": 16,
-                "max_width": 500
+                "max_width": 500,
+                "color": {
+                    "rgb": "#1e1e1e"
+                }
             }
         },
         {
@@ -30,7 +36,10 @@
                 "y": 100,
                 "font": "super_toast",
                 "font_size": 12,
-                "max_width": 400
+                "max_width": 400,
+                "color": {
+                    "rgb": "#eeeeee"
+                }
             }
         }
     ]
