@@ -1,0 +1,37 @@
+{
+    "nodes": [
+        {
+            "name": "name",
+            "type": "text",
+            "spec": {
+                "x": 300,
+                "y": 200,
+                "font": "super_toast",
+                "font_size": 64,
+                "max_width": 400
+            }
+        },
+        {
+            "name": "body",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 400,
+                "font": "Arial",
+                "font_size": 16,
+                "max_width": 500
+            }
+        },
+        {
+            "name": "flavor-text",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 100,
+                "font": "super_toast",
+                "font_size": 12,
+                "max_width": 400
+            }
+        }
+    ]
+}

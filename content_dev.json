@@ -1,0 +1,25 @@
+{
+    "nodes":[
+        {
+            "name": "name",
+            "type": "text",
+            "content": {
+                "text": "Yeetombolis"
+            }
+        },
+        {
+            "name": "body",
+            "type": "text",
+            "content": {
+                "text": "This is card text. It will eventually end up going somewhere on the card. \nBody text is a pain in the neck because it will likely require manually spliting the paragraphs by newline."
+            }
+        },
+        {
+            "name": "flavor-text",
+            "type": "text",
+            "content": {
+                "text" : "\"Bazinga!\""
+            }
+        }
+    ]
+}
