@@ -2,24 +2,28 @@ package main
 
 import (
 	"fmt"
-	"log"
+	"image"
+	"image/color"
+	"image/png"
+	"os"
+
+	"github.com/tdewolff/canvas"
+	"github.com/tdewolff/canvas/renderers"
 
 	parse "card-builder/src/parse"
-
-	"github.com/fogleman/gg"
 )
 
-func drawTextNode(context *gg.Context, spec parse.TextSpec, content parse.TextContent) {
+func drawTextNode(ctx *canvas.Context, spec parse.TextSpec, content parse.TextContent) {
 
-	if err := context.LoadFontFace("../resources/fonts/"+spec.Font+".ttf", spec.FontSize); err != nil {
-		log.Fatalf("Error loading font: %v", err)
-	}
+	face := fontFaceFromFile("../resources/fonts/"+spec.Font, spec.FontSize, spec.GetColor())
 
-	context.SetHexColor(spec.Color)
-	context.DrawString(content.Text, spec.X, spec.Y)
+	text := canvas.NewTextLine(face, content.Text, canvas.Center)
+
+	ctx.DrawText(spec.X, spec.Y, text)
+
 }
 
-func paintNodes(context *gg.Context, specs map[string]parse.SpecNode, contents map[string]parse.ContentNode) {
+func paintNodes(cxt *canvas.Context, specs map[string]parse.SpecNode, contents map[string]parse.ContentNode) {
 
 	for _, contentNode := range contents {
 
@@ -36,7 +40,7 @@ func paintNodes(context *gg.Context, specs map[string]parse.SpecNode, contents m
 			if textContent, ok := contentNode.Content.(parse.TextContent); ok {
 
 				if textSpec, ok := specNode.Spec.(parse.TextSpec); ok {
-					drawTextNode(context, textSpec, textContent)
+					drawTextNode(cxt, textSpec, textContent)
 				} else {
 					fmt.Println("Spec is not TextSpec: " + specNode.Name)
 				}
@@ -49,33 +53,54 @@ func paintNodes(context *gg.Context, specs map[string]parse.SpecNode, contents m
 	}
 }
 
+func createImage(path string) image.Image {
+
+	file, err := os.Open(path)
+	if err != nil {
+		panic(err)
+	}
+
+	img, err := png.Decode(file)
+	if err != nil {
+		panic(err)
+	}
+
+	return img
+}
+
+func fontFaceFromFile(path string, size float64, color color.Color) *canvas.FontFace {
+	fontFamily := canvas.NewFontFamily("generic")
+	if err := fontFamily.LoadFontFile(path, canvas.FontRegular); err != nil {
+		fmt.Println("Failed to load font")
+		panic(err)
+	}
+
+	face := fontFamily.Face(size, color, canvas.FontRegular, canvas.FontNormal)
+
+	return face
+}
+
 func main() {
 	const inputPath = "../resources/images/coolwater_sprite-_1_TEMPLATE.png"
 	const outputPath = "../resources/images/output.png"
-	const fontPath = "../resources/fonts/"
 
-	// Load the image
-	image, err := gg.LoadImage(inputPath)
+	c := canvas.New(750, 1050)
 
-	if err != nil {
-		log.Fatalf("Error loading image: %v", err)
-	}
-
-	dc := gg.NewContextForImage(image) // Create a context with zero width and height, will auto adjust
-
-	// Load the font
+	ctx := canvas.NewContext(c)
 
 	specNodes := parse.GetSpecification("../spec_hexblitz_familiar.json")
-	contentNodes := parse.GetContent("../content_dev.json")
+	contentNodes := parse.GetContent("../content_coolwatersprite.json")
 
-	fmt.Println(specNodes)
-	fmt.Println(contentNodes)
+	// fmt.Println(specNodes)
+	// fmt.Println(contentNodes)
 
-	paintNodes(dc, specNodes, contentNodes)
+	img := createImage(inputPath)
+	ctx.DrawImage(0, 0, img, canvas.DPMM(1))
 
-	// Save the image
-	if err := dc.SavePNG(outputPath); err != nil {
-		log.Fatalf("Error saving image: %v", err)
+	paintNodes(ctx, specNodes, contentNodes)
+
+	if err := renderers.Write(outputPath, c); err != nil {
+		panic(err)
 	}
 
 	fmt.Println("Image saved to", outputPath)

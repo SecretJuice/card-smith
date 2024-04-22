@@ -30,7 +30,7 @@ type RGBA struct {
 
 func (t TextSpec) isSpec() {}
 func (t TextSpec) GetColor() color.RGBA {
-	bytes, err := hex.DecodeString(t.Color)
+	bytes, err := hex.DecodeString(t.Color[1:])
 	if err != nil {
 		panic(err)
 	}

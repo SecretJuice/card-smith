@@ -1,0 +1,53 @@
+{
+    "nodes":[
+        {
+            "name": "name",
+            "type": "text",
+            "content": {
+                "text": "Coolwater Sprite"
+            }
+        },
+        {
+            "name": "card-text",
+            "type": "text",
+            "content": {
+                "text": "On Summon: For each familiar to the left and right of Coolwater Sprite, gain 1 mana.\nWhen you spend mana on a ritual spell, gain 1 mana."
+            }
+        },
+        {
+            "name": "flavor-text",
+            "type": "text",
+            "content": {
+                "text" : "\"YEEUGH! No hugs NO HUGS!\" ~Rob Last"
+            }
+        },
+        {
+            "name": "traits",
+            "type": "text",
+            "content": {
+                "text" : "Water Elemental"
+            }
+        },
+        {
+            "name": "power",
+            "type": "text",
+            "content": {
+                "text" : "4"
+            }
+        },
+        {
+            "name": "body",
+            "type": "text",
+            "content": {
+                "text" : "5"
+            }
+        },
+        {
+            "name": "level",
+            "type": "text",
+            "content": {
+                "text" : "2"
+            }
+        }
+    ]
+}

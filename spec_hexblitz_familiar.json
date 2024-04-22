@@ -4,9 +4,57 @@
             "name": "name",
             "type": "text",
             "spec": {
-                "x": 300,
-                "y": 900,
-                "font": "Morl-Regular",
+                "x": 375,
+                "y": 100,
+                "font": "FUTURISTIC.otf",
+                "font_size": 96,
+                "max_width": 400,
+                "color": "#ffffffff"
+            }
+        },
+        {
+            "name": "card-text",
+            "type": "text",
+            "spec": {
+                "x": 375,
+                "y": 400,
+                "font": "Morl-Regular.ttf",
+                "font_size": 86,
+                "max_width": 500,
+                "color": "#ffffffff"
+            }
+        },
+        {
+            "name": "flavor-text",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 100,
+                "font": "Morl-LightItalic.ttf",
+                "font_size": 32,
+                "max_width": 400,
+                "color": "#ffffffff"
+            }
+        },
+        {
+            "name": "traits",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 100,
+                "font": "Morl-LightItalic.ttf",
+                "font_size": 32,
+                "max_width": 400,
+                "color": "#ffffffff"
+            }
+        },
+        {
+            "name": "power",
+            "type": "text",
+            "spec": {
+                "x": 100,
+                "y": 100,
+                "font": "Morl-LightItalic.ttf",
                 "font_size": 32,
                 "max_width": 400,
                 "color": "#ffffffff"
@@ -17,23 +65,23 @@
             "type": "text",
             "spec": {
                 "x": 100,
-                "y": 400,
-                "font": "Arial",
-                "font_size": 16,
-                "max_width": 500,
-                "color": "#1e1e1eaa"
+                "y": 100,
+                "font": "Morl-LightItalic.ttf",
+                "font_size": 32,
+                "max_width": 400,
+                "color": "#ffffffff"
             }
         },
         {
-            "name": "flavor-text",
+            "name": "level",
             "type": "text",
             "spec": {
                 "x": 100,
                 "y": 100,
-                "font": "Morl-Regular",
-                "font_size": 12,
+                "font": "Morl-LightItalic.ttf",
+                "font_size": 32,
                 "max_width": 400,
-                "color": "#ff0000ff"
+                "color": "#ffffffff"
             }
         }
     ]
