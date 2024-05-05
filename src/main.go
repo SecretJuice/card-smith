@@ -6,6 +6,7 @@ import (
 	"image/color"
 	"image/png"
 	"os"
+	"time"
 
 	"github.com/tdewolff/canvas"
 	"github.com/tdewolff/canvas/renderers"
@@ -26,6 +27,8 @@ func drawTextNode(ctx *canvas.Context, spec parse.TextSpec, content parse.TextCo
 func paintNodes(cxt *canvas.Context, specs map[string]parse.SpecNode, contents map[string]parse.ContentNode) {
 
 	for _, contentNode := range contents {
+
+		startTime := time.Now()
 
 		specNode, ok := specs[contentNode.Name]
 		if !ok {
@@ -49,6 +52,10 @@ func paintNodes(cxt *canvas.Context, specs map[string]parse.SpecNode, contents m
 				fmt.Println("Content is not TextContent: " + contentNode.Name)
 			}
 		}
+
+		elapsedTime := time.Since(startTime)
+
+		fmt.Printf(contentNode.Name+" took %s to complete.\n", elapsedTime)
 
 	}
 }
@@ -99,11 +106,15 @@ func main() {
 
 	paintNodes(ctx, specNodes, contentNodes)
 
+	startTime := time.Now()
+
 	if err := renderers.Write(outputPath, c); err != nil {
 		panic(err)
 	}
 
-	fmt.Println("Image saved to", outputPath)
+	elapsedTime := time.Since(startTime)
+
+	fmt.Printf("Image saved to %s: took %s after loading specs", outputPath, elapsedTime)
 
 	// TODO:
 	// Get Specification
