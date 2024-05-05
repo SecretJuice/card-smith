@@ -6,6 +6,9 @@ import (
 	"os"
 )
 
+/*
+Root interface for the Card Content Data specification
+*/
 type Content interface {
 	Type() string // This method is just for making Spec an interface
 }
